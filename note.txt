@@ -1,0 +1,42 @@
+[
+  {
+    $match: {
+      type: "post"
+    },
+  },
+  {
+    $sort: {
+      created: -1
+    },
+  },
+  {
+    $limit: 10
+  },
+  {
+    $lookup: {
+      from: "users",
+      localField: "owner",
+      foreignField: "_id",
+      as: "owner"
+    },
+  },
+  {
+    $lookup: {
+      from: "users",
+      localField: "likes",
+      foreignField: "_id",
+      as: "likes"
+    },
+  },
+  {
+    $lookup: {
+      from: "posts",
+      localField: "_id",
+      foreignField: "origin",
+      as: "comments"
+    },
+  },
+  {
+    $unwind: "$owner"
+  },
+]
