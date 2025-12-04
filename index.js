@@ -4,6 +4,9 @@ const express = require("express");
 const app = express();
 require("express-ws")(app);
 
+const connectDB = require("./db");
+connectDB();
+
 const cors = require("cors");
 app.use(cors());
 
