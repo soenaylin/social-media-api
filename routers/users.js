@@ -28,7 +28,7 @@ const auth = (req, res, next) => {
     return res.status(403).json({ msg: "Unauthorize access" });
   }
 
-  jwt.verify(token, process.env.SECRET, (err, data) => {
+  jwt.verify(token, process.env.JWT_SECRET, (err, data) => {
     if (err) {
       return res.status(403).json(err);
     }
