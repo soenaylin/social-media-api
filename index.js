@@ -8,11 +8,15 @@ const connectDB = require("./db");
 connectDB();
 
 const cors = require("cors");
-app.use(cors({
-    origin: "https://social-media-web-gold.vercel.app/",
-    methods: "GET,POST,PUT,DELETE",
-    // if using cookies / credentials: add credentials: true
-}));
+app.use(
+	cors({
+		origin: [
+			"https://social-media-bub2z8xm2-soe-nay-lins-projects.vercel.app",
+            "https://social-media-web-gold.vercel.app",
+		],
+		credentials: true,
+	})
+);
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
