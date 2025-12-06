@@ -8,7 +8,11 @@ const connectDB = require("./db");
 connectDB();
 
 const cors = require("cors");
-app.use(cors());
+app.use(cors({
+    origin: "https://social-media-web-gold.vercel.app/",
+    methods: "GET,POST,PUT,DELETE",
+    // if using cookies / credentials: add credentials: true
+}));
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
