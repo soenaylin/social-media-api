@@ -53,7 +53,7 @@ router.post("/login", async (req, res) => {
   const user = await db.collection("users").findOne({ username });
   if (user) {
     if (await bcrypt.compare(password, user.password)) {
-      const token = jwt.sign(user, process.env.SECRET);
+      const token = jwt.sign(user, process.env.JWT_SECRET);
       return res.json({ token });
     }
   }
